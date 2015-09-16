@@ -8,3 +8,9 @@ CMakeScripts/
 # OS X
 *.xcodeproj/
 Debug/
+
+# Visual studio
+*.vcxproj*
+*.opensdf
+*.sdf
+*.sln

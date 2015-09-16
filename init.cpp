@@ -22,6 +22,7 @@
 
 #include "apricots.h"
 #include "menu.h"
+#include "sys_specifics.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -227,8 +228,8 @@ char *getHomeDir(char *home)
 		free(home);
 	}
 
-	home = (char *)malloc(strlen(getenv("HOME")) + strlen("/.apricots/") + 1);
-	strcpy(home, getenv("HOME"));
+	home = (char *)malloc(strlen(getenv(HOME_DIR_ENV)) + strlen("/.apricots/") + 1);
+	strcpy(home, getenv(HOME_DIR_ENV));
 	strcat(home, "/.apricots/");
 	mkdir(home, 0755); // create $HOME/.apricots if it doesn't exist
 	printf("home: %s\n", home);

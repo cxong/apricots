@@ -6,7 +6,7 @@
 // Changes by M Harman for Windows version, June 2003:
 //   Changes for graphics related stuff.
 
-#include "SDL/SDL.h"
+#include <SDL.h>
 #include <fstream>
 using namespace std;
 

@@ -3,7 +3,7 @@
 // Date: 24/7/2003
 // History:
 
-#include "SDL/SDL.h"
+#include <SDL.h>
 #include <cstdlib>
 #include <fstream>
 #include <iostream>

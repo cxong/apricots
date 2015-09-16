@@ -1,4 +1,6 @@
-#include <SDL/SDL.h>
+#include <algorithm>
+
+#include <SDL.h>
 #include "apricots.h"
 #include "init.h"
 #include "menu.h"
@@ -999,9 +1001,10 @@ void menuSelectPlayer(gamedata &g)
 
 void menuSelectPlayerDraw(gamedata &g)
 {
-	int numOfJoys = SDL_NumJoysticks();
+#define MAX_JOYSTICKS 10
+	int numOfJoys = std::min(SDL_NumJoysticks(), MAX_JOYSTICKS);
 
-	char textJoys[numOfJoys][5];
+	char textJoys[MAX_JOYSTICKS][5];
 
 	for(int i = 0; i < numOfJoys; i++)
 	{

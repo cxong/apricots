@@ -20,7 +20,7 @@
 #ifndef _APRICOTS_H_
 #define _APRICOTS_H_
 
-#include <SDL/SDL.h>
+#include <SDL.h>
 #include <cstdlib>
 #include <ctime>
 #include <cmath>
