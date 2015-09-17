@@ -68,8 +68,6 @@ void drop_bomb(plane &p, linkedlist <falltype> &fall, sampleio &sound,
 
 
   p.shotdelay = int(5/GAME_SPEED);
-  sound.play(SOUND_BOMB);
-
 }
 
 // Main plane action routine
@@ -95,10 +93,6 @@ void act(gamedata &g, int jx, int jy, bool jb){
           if (jy == -1){
             g.p().s = 0.3*GAME_SPEED*GAME_SPEED;
             g.p().land = 1;
-            if ((g.p().control) > 0){
-              g.sound.volume(g.p().control-1, 0.0);
-              g.sound.loop(g.p().control-1, g.p().enginesample);
-            }
           }
           break;
 
@@ -248,11 +242,6 @@ void act(gamedata &g, int jx, int jy, bool jb){
         g.p().xs = g.p().s * g.xmove[g.p().d];
         g.p().ys = g.p().s * g.ymove[g.p().d];
         g.p().coms = 0;
-        if ((g.p().control) > 0){
-          double volume = g.p().s / (6.0*GAME_SPEED);
-          g.sound.volume(g.p().control-1, volume * 0.5);
-          g.sound.loop(g.p().control-1, g.p().enginesample);
-        }
       }
       break;
 
@@ -310,24 +299,6 @@ void act(gamedata &g, int jx, int jy, bool jb){
   // Move the planes
   g.p().x += g.p().xs;
   g.p().y += g.p().ys;
-
-  // Control Engine Volume
-  if ((g.p().control) > 0){
-    if ((g.p().state == 0) && (g.p().land > 0)){
-      double volume = g.p().s / (6.0*GAME_SPEED);
-      g.sound.volume(g.p().control-1, volume * 0.5);
-      if ((g.p().boost) && (g.p().enginesample == SOUND_JET)){
-        g.p().enginesample = SOUND_BURNER;
-        g.sound.loop(g.p().control-1,SOUND_BURNER);
-      }
-      if ((!g.p().boost) && (g.p().enginesample == SOUND_BURNER)){
-        g.p().enginesample = SOUND_JET;
-        g.sound.loop(g.p().control-1,SOUND_JET);
-      }
-    }else{
-      g.sound.stop(g.p().control-1);
-    }
-  }
 
   if (g.p().state < 3) detect_collisions(g);
 

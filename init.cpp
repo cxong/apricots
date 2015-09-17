@@ -143,20 +143,16 @@ void init_sound(sampleio &sound){
   char filenames[14][255];
   for (int i=0;i<14;i++){
     strcpy(filenames[i],AP_PATH);
-  } 
-  strcat(filenames[0],"engine.wav");
-  strcat(filenames[1],"jet.wav");
+  }
   strcat(filenames[2],"explode.wav");
   strcat(filenames[3],"groundhit.wav");
   strcat(filenames[4],"fuelexplode.wav");
   strcat(filenames[5],"shot.wav");
   strcat(filenames[6],"gunshot.wav");
-  strcat(filenames[7],"bomb.wav");
   strcat(filenames[8],"splash.wav");
   strcat(filenames[9],"laser.wav");
   strcat(filenames[10],"stall.wav");
   strcat(filenames[11],"gunshot2.wav");
-  strcat(filenames[12],"afterburner.wav");
   strcat(filenames[13],"finish.wav");
 
   sound.init(14, filenames, 2, 6);

@@ -295,7 +295,6 @@ struct plane{
   int bombs;
   int maxbombs;
   int shrapnelimage;
-  int enginesample;
   bool drak;
   int score;
   int targetscore;
@@ -387,20 +386,15 @@ const airbase TWOGUN_AIRBASE(48,96,5,128,5,0,0,0,RADAR,GUN,HANGAR,NB,NB,
                                  NB,NB,NB,NB,NB,CONTROLTOWER,GUN,RADAR);
                                  
 // Sample definitions
-
-const int SOUND_ENGINE = 0;
-const int SOUND_JET = 1;
 const int SOUND_EXPLODE = 2;
 const int SOUND_GROUNDHIT = 3;
 const int SOUND_FUELEXPLODE = 4;
 const int SOUND_SHOT = 5;
 const int SOUND_GUNSHOT = 6;
-const int SOUND_BOMB = 7;
 const int SOUND_SPLASH = 8;
 const int SOUND_LASER = 9;
 const int SOUND_STALL = 10;
 const int SOUND_GUNSHOT2 = 11;
-const int SOUND_BURNER = 12;
 const int SOUND_FINISH = 13;
 
 // Plane definitions
@@ -408,19 +402,19 @@ const int SOUND_FINISH = 13;
 const plane SPITFIRE = {0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0,
                         122, 0, int(3/GAME_SPEED)-1,
                         false, false, false, false, 0, 8, 8, 4, 4, 143,
-                        SOUND_ENGINE, false, 0, 0, 0, 0, 0, 0, 0};
+                        false, 0, 0, 0, 0, 0, 0, 0};
 const plane JET = {0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0,
                         76, 0, int(2/GAME_SPEED)-1,
                         false, true, false, false, 0, 12, 12, 5, 5, 140,
-                        SOUND_JET, false, 0, 0, 0, 0, 0, 0, 0};
+                        false, 0, 0, 0, 0, 0, 0, 0};
 const plane STEALTH = {0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0,
                         174, 0, int(4/GAME_SPEED)-1,
                         false, false, false, true, 0, 3, 3, 6, 6, 235,
-                        SOUND_JET, false, 0, 0, 0, 0, 0, 0, 0};
+                        false, 0, 0, 0, 0, 0, 0, 0};
 const plane DRAK_FIGHTER = {0.0, 0.0, 0.0, 2.0*GAME_SPEED, 2.0*GAME_SPEED, 9, 0, 2, 1, 0, 0, 0,
                         259, 0, int(1/GAME_SPEED)-1,
                         false, true, false, false, 0, 1000, 1000, 0, 0, 235,
-                        SOUND_JET, true, 0, 0, 0, 0, 0, 0, 0};
+                        true, 0, 0, 0, 0, 0, 0, 0};
 
 
 // Drak mothership initial state
