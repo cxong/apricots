@@ -6,43 +6,8 @@
 // Changes by M Snellgrove 25/7/2003
 //   Conditional Compilation for OpenAL
 
-// Option definitions
-#define AUDIO_NOAUDIO 0
-#define AUDIO_SDLMIXER 1
-#define AUDIO_OPENAL 2
-
-// Check compiler flags
-#ifdef AP_AUDIO_SDLMIXER
-#define AP_AUDIO AUDIO_SDLMIXER
-#endif
-
-#ifdef AP_AUDIO_OPENAL
-#define AP_AUDIO AUDIO_OPENAL
-#endif
-
-#ifndef AP_AUDIO
-#define AP_AUDIO AUDIO_NOAUDIO
-#endif
-
-// Noaudio definitions
-#if AP_AUDIO==AUDIO_NOAUDIO
-typedef int ALuint;
-typedef bool ALboolean;
-#endif
-
 // SDL Mixer audio definitions
-#if AP_AUDIO==AUDIO_SDLMIXER
 #include <SDL_mixer.h>
-typedef Mix_Chunk* ALuint;
-typedef bool ALboolean;
-#endif
-
-// OpenAL includes
-#if AP_AUDIO==AUDIO_OPENAL
-#include <AL/al.h>
-#include <AL/alc.h>
-#include <AL/alut.h>
-#endif
 
 #include <cstdio>
 #include <cstdlib>
@@ -56,13 +21,12 @@ class sampleio{
     int numsamples;
     int numsources;
     int numpool;
-    ALuint* sources;
-//    Mix_Chunk** sources;
+    Mix_Chunk** sources;
     bool initdone;
-    ALuint* samples;
+	Mix_Chunk** samples;
     int poolcount;
     void psource(int source, int sample, bool loop);
-    ALboolean sourceisplaying(ALuint);
+	bool sourceisplaying(Mix_Chunk*);
   public:
     sampleio();
     void init(int, char[][255], int, int);
